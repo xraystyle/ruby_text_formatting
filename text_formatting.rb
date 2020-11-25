@@ -6,28 +6,28 @@
 
 class String
 
-	# Useful in IRB if you need a quick options list.
-	def self.available_formatting
-		puts "\nAvailable formatting options:"
-		puts
-		puts "bold\ndim\nunderlined\nblink\n\n"
+  # Useful in IRB if you need a quick options list.
+  def self.available_formatting
+    puts "\nAvailable formatting options:"
+    puts
+    puts "bold\ndim\nunderlined\nblink\n\n"
 
-		puts "Available text colors:"
-		puts
-		puts "red\ngreen\nyellow\nblue\nmagenta\ncyan\nlight_gray\ndark_gray\nlight_red\nlight_green\nlight_yellow\nlight_blue\nlight_magenta\nlight_cyan\nwhite\n\n"
+    puts "Available text colors:"
+    puts
+    puts "red\ngreen\nyellow\nblue\nmagenta\ncyan\nlight_gray\ndark_gray\nlight_red\nlight_green\nlight_yellow\nlight_blue\nlight_magenta\nlight_cyan\nwhite\n\n"
 
-		puts "Available highlight colors:"
-		puts
-		puts "red\ngreen\nyellow\nblue\nmagenta\ncyan\nlight gray\ndark gray\nlight red\nlight green\nlight yellow\nlight blue\nlight magenta\nlight cyan\nwhite\n\n"
-	end
+    puts "Available highlight colors:"
+    puts
+    puts "red\ngreen\nyellow\nblue\nmagenta\ncyan\nlight gray\ndark gray\nlight red\nlight green\nlight yellow\nlight blue\nlight magenta\nlight cyan\nwhite\n\n"
+  end
 
 
-	# Add the color or formatting code escape characters to the string.
-	def colorize(color_code)
-		"\e[#{color_code}m#{self}\e[0m"
-	end
+  # Add the color or formatting code escape characters to the string.
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
 
-	@color_codes = { bold: 1, dim: 2, underlined: 4, blink: 5,
+  @color_codes = { bold: 1, dim: 2, underlined: 4, blink: 5,
                  hidden: 8, red: 31, green: 32, yellow: 33,
                  blue: 34, magenta: 35, cyan: 36, light_gray: 37,
                  dark_gray: 90, light_red: 91, light_green: 92,
@@ -44,9 +44,9 @@ class String
   # define the color methods to call #colorize with the
   # associated color code.
   @color_codes.each do |color, code|
-  	define_method(color) do
-  		colorize(code)
-  	end
+    define_method(color) do
+      colorize(code)
+    end
   end
 
 end
